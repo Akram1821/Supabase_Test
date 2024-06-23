@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Supabase configuration
     const SUPABASE_URL = 'https://qgzgeanmtwuxiaeplbqg.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnemdlYW5tdHd1eGlhZXBsYnFnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxOTExMDM2NiwiZXhwIjoyMDM0Njg2MzY2fQ.gV8GTwMcOfio_gnTH1RvvT4_Re5pimUk_kiAzLqAf-Q';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // Correctly initialize the Supabase client
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     // Form submission handler
     document.getElementById('order-form').addEventListener('submit', async (event) => {
@@ -35,30 +36,34 @@ document.addEventListener('DOMContentLoaded', () => {
             prix_total
         });
 
-        const { data, error } = await supabase
-            .from('orders')
-            .insert([
-                {
-                    nom,
-                    prénom,
-                    numéro_de_téléphone,
-                    wilaya,
-                    commune,
-                    nom_de_produit,
-                    couleur,
-                    taille,
-                    prix_de_produit,
-                    quantité,
-                    prix_total
-                }
-            ]);
+        try {
+            const { data, error } = await supabaseClient
+                .from('orders')
+                .insert([
+                    {
+                        nom,
+                        prénom,
+                        numéro_de_téléphone,
+                        wilaya,
+                        commune,
+                        nom_de_produit,
+                        couleur,
+                        taille,
+                        prix_de_produit,
+                        quantité,
+                        prix_total
+                    }
+                ]);
 
-        if (error) {
-            console.error('Erreur lors de l\'insertion des données :', error);
-        } else {
-            console.log('Commande passée avec succès :', data);
-            alert('Commande passée avec succès !');
-            document.getElementById('order-form').reset();
+            if (error) {
+                console.error('Erreur lors de l\'insertion des données :', error);
+            } else {
+                console.log('Commande passée avec succès :', data);
+                alert('Commande passée avec succès !');
+                document.getElementById('order-form').reset();
+            }
+        } catch (err) {
+            console.error('Erreur inattendue :', err);
         }
     });
 });
