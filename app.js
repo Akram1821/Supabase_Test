@@ -1,9 +1,9 @@
-// Supabase configuration
-const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
-const SUPABASE_KEY = 'your-supabase-key';
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Supabase configuration
+    const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+    const SUPABASE_KEY = 'your-supabase-key';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
     // Form submission handler
     document.getElementById('order-form').addEventListener('submit', async (event) => {
         event.preventDefault();
