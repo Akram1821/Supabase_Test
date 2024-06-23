@@ -1,9 +1,10 @@
+// Import the Supabase client from the CDN
+const { createClient } = window.supabase;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Supabase configuration
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const SUPABASE_URL = 'https://qgzgeanmtwuxiaeplbqg.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnemdlYW5tdHd1eGlhZXBsYnFnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxOTExMDM2NiwiZXhwIjoyMDM0Njg2MzY2fQ.gV8GTwMcOfio_gnTH1RvvT4_Re5pimUk_kiAzLqAf-Q';
+// Initialize Supabase client
+const SUPABASE_URL = 'https://qgzgeanmtwuxiaeplbqg.supabase.co/';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnemdlYW5tdHd1eGlhZXBsYnFnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxOTExMDM2NiwiZXhwIjoyMDM0Njg2MzY2fQ.gV8GTwMcOfio_gnTH1RvvT4_Re5pimUk_kiAzLqAf-Q';
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Wait for the DOM content to be loaded before running the script
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,3 +41,31 @@ document.addEventListener('DOMContentLoaded', () => {
             quantité:quantité,
             prix_total:prix_total
         });
+        const { data, error } = await supabase
+            .from('Orders')
+            .insert([
+                {
+                    nom,
+                    prénom,
+                    numéro_de_téléphone,
+                    wilaya,
+                    commune,
+                    nom_de_produit,
+                    couleur,
+                    taille,
+                    prix_de_produit,
+                    quantité,
+                    prix_total
+                }
+            ]);
+
+        // Handle response
+        if (error) {
+            console.error('Erreur lors de l\'insertion des données :', error);
+        } else {
+            console.log('Commande passée avec succès :', data);
+            alert('Commande passée avec succès !');
+            document.getElementById('order-form').reset();
+        }
+    });
+});
