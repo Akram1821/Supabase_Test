@@ -20,6 +20,20 @@ document.getElementById('order-form').addEventListener('submit', async (event) =
     const prix_de_produit = parseFloat(document.getElementById('product-price').innerText);
     const prix_total = prix_de_produit * quantité;
 
+    console.log({
+        nom,
+        prénom,
+        numéro_de_téléphone,
+        wilaya,
+        commune,
+        nom_de_produit,
+        couleur,
+        taille,
+        prix_de_produit,
+        quantité,
+        prix_total
+    });
+
     const { data, error } = await supabase
         .from('orders')
         .insert([
@@ -41,6 +55,7 @@ document.getElementById('order-form').addEventListener('submit', async (event) =
     if (error) {
         console.error('Erreur lors de l\'insertion des données :', error);
     } else {
+        console.log('Commande passée avec succès :', data);
         alert('Commande passée avec succès !');
         document.getElementById('order-form').reset();
     }
