@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="product-page">
+        <h1 id="product-name">Nom du Produit</h1>
+        <p>Couleur: <span id="product-color">Rouge</span></p>
+        <p>Taille: <span id="product-size">XL</span></p>
+        <p>Prix: <span id="product-price">25.99</span> €</p>
+        <form id="order-form">
+            <input type="text" id="nom" name="nom" placeholder="Nom" required>
+            <input type="text" id="prénom" name="prénom" placeholder="Prénom" required>
+            <input type="text" id="numéro_de_téléphone" name="numéro_de_téléphone" placeholder="Numéro de téléphone" required>
+            <input type="text" id="wilaya" name="wilaya" placeholder="Wilaya" required>
+            <input type="text" id="commune" name="commune" placeholder="Commune" required>
+            <input type="number" id="quantité" name="quantité" placeholder="Quantité" required>
+            <button type="submit">Acheter</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
