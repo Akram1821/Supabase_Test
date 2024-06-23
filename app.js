@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Supabase configuration
-    const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
-    const SUPABASE_KEY = 'your-supabase-key';
+    const SUPABASE_URL = 'https://qgzgeanmtwuxiaeplbqg.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnemdlYW5tdHd1eGlhZXBsYnFnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxOTExMDM2NiwiZXhwIjoyMDM0Njg2MzY2fQ.gV8GTwMcOfio_gnTH1RvvT4_Re5pimUk_kiAzLqAf-Q';
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     // Form submission handler
