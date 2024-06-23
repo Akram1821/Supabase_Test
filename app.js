@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const { data, error } = await supabase
-            .from('orders')
+            .from('Orders')
             .insert([
                 {
                     nom,
