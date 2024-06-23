@@ -42,8 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
             prix_total:prix_total
         });
 
+<<<<<<< HEAD
         // Insert data into Supabase
         const { data, error } = await supabase.from('Orders')
+=======
+        const { data, error } = await supabase
+            .from('Orders')
+>>>>>>> 951c8a4437f77336d2cf3a2f49936fa5b6c01599
             .insert([
                 {
                     nom,
